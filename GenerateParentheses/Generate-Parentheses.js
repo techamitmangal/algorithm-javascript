@@ -30,6 +30,6 @@ const generateParentheses =  (remainOpeningBraceCount, remainClosingBraceCount, 
 };
 var str = "";
 var validParentheses = [];
-var numberOfBrces = 3; 
+var numberOfBrces = 2; 
 generateParentheses(numberOfBrces, numberOfBrces, str);
 console.log(validParentheses);
