@@ -43,7 +43,6 @@ function merge (arr, left, middle, right) {
     var j = 0;
 
     // Initial index of merged subarray
-
     var k = left;
 
     while (i < n1 && j < n2) {
