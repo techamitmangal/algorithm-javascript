@@ -53,13 +53,14 @@ var medianOfSortedArrays = (arrA, arrB) => {
     //Check if arrA is smaller than arrB
     //if not then we will swap num1 with num2, We want to interate over smaller array
     if (arrA.length > arrB.length) {
-        medianOfSortedArrays(arrB, arrA);
+        return medianOfSortedArrays(arrB, arrA);
     }
 
     // length of two arrays 
     const arrALength = arrA.length;
     const arrBLength = arrB.length;
     const totalArrLength = arrALength + arrBLength ;
+    
     //pointers for binary search
     let start = 0;
     let end = arrALength;
@@ -72,18 +73,18 @@ var medianOfSortedArrays = (arrA, arrB) => {
 
         //Edge Cases
         //If there are no elements left on the left side after partition 
-        let maxLeftA = partitionA = 0 ? Number.MIN_SAFE_INTEGER : arrA[partitionA - 1];
+        let maxLeftA = partitionA === 0 ? Number.MIN_SAFE_INTEGER : arrA[partitionA - 1];
         // If there are no elements left on the right side after partition
-        let minRightA = partitionA = arrALength ? Number.MAX_SAFE_INTEGER : arrA[partitionA];
+        let minRightA = partitionA === arrALength ? Number.MAX_SAFE_INTEGER : arrA[partitionA];
         
         // Similarly for arrB
-        let maxLeftB = partitionB = 0 ? Number.MIN_SAFE_INTEGER : arrB[partitionB - 1];
-        let minRightB = partitionB = arrBLength ? Number.MAX_SAFE_INTEGER : arrB[partitionB];
+        let maxLeftB = partitionB === 0 ? Number.MIN_SAFE_INTEGER : arrB[partitionB - 1];
+        let minRightB = partitionB === arrBLength ? Number.MAX_SAFE_INTEGER : arrB[partitionB];
         
         // Check if we have found the match
         if (maxLeftA <= minRightB && maxLeftB <= minRightA) {
             // Check if the combined array is of even/odd length
-            if ((arrALength + arrBLength) % 2 === 0) {
+            if (totalArrLength % 2 === 0) {
                 return (Math.max(maxLeftA, maxLeftB) + Math.min(minRightA, minRightB)) / 2.0 ;
             } else {
                 return Math.max(maxLeftA, maxLeftB);
@@ -102,6 +103,6 @@ var medianOfSortedArrays = (arrA, arrB) => {
     return 0 ;
 };
 
-console.log("Median = ", medianOfSortedArrays([2, 4, 6, 8, 18],[3, 15, 27, 38]));
+console.log("Median = ", medianOfSortedArrays([4,5,6,8,9],[]));
 
 
